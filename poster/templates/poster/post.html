@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ <h1 class="cover-heading">DNPT poster un lien.</h1>
+        <p class="lead">Ajouter facilement votre lien vers votre page ici.</p>
+    <form method="post">
+        {% csrf_token %}
+
+        <label class="card-title">Nom du lien : </label>
+        <input type="text" name="link_name" class="form-control">
+        <br/>
+         <label class="card-title">Lien vers le flux ou la chaine Youtube : </label>
+        <input type="text" name="link" class="form-control">
+        <br/>
+        <button class="btn btn-primary" type="submit">Sauvegarder</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>DNPT POSTER</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/cover/">
+    <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/stackoverflow/Img/favicon.ico?v=ec617d715196" type="image/x-icon">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+
+
+ </head>
+<body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">DNPT POSTER</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link" href="/">Tous les liens</a>
+            <a class="nav-link" href="/post-link/">Publier un lien</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+         {% block content %}
+        {% endblock %}
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Design by <a href="https://homescriptone.com/">HomeScript</a>.</p>
+        </div>
+      </footer>
+    </div>
+
+
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            let current_url = window.location.pathname;
+            $('a.nav-link').each(function () {
+                if ($(this).attr('href') == current_url){
+                    $(this).addClass("active")
+                }
+            })
+
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class="cover-heading">DNPT Liens.</h1>
+        <p class="lead">DNPT est une application permettant de publier sur un channel telegram, necessite une connexion pour accéder.</p>
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+    <span style="display: flex; flex-wrap: nowrap;"><input type="text" class="form-control" name="search"><button class="btn btn-primary">Rechercher</button></span>
+     </form>
+    <br/>
+        <table class="table table-bordered" style="color: white;">
+        <thead >
+        <tr scope="col"><th>Nom</th> <th>Lien</th> </tr>
+        </thead>
+        <tbody>
+            {% for contact in page_obj %}
+                <tr > <th><strong>{{ contact.get_link_name }}</strong></th>  <th><a href="{{ contact.get_link }}">{{ contact.get_link }}</a></th></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination" style="float: right;">
+    <span class="step-links" >
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="btn btn-primary"> << </a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary"><</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">  > </a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-primary"> >> </a>
+        {% endif %}
+    </span>
+</div>
+</div>
+
+
+
+{% endblock %}
